@@ -1,0 +1,3 @@
+switches           KEYWORD1
+switches_turnon    KEYWORD2
+switches_turnoff   KEYWORD3
