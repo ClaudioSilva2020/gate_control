@@ -14,7 +14,7 @@
 switches::switches(int pin)
 {   
     _pin = pin;
-    state = OFF;
+    state = LOW;
 
     pinMode(pin, GATE_OUTPUT);
 
@@ -28,12 +28,21 @@ switches::~switches()
 
 void switches::switches_turnon()
 {
-    digitalWrite(_pin, OFF);
-    state = ON;
+    digitalWrite(_pin, LOW);
+    state = HIGH;
 }
 
 void switches::switches_turnoff()
 {
-    digitalWrite(_pin, ON);
-    state = OFF;
+    digitalWrite(_pin, HIGH);
+    state = LOW;
+}
+
+void switches::switches_toogle(float time_delay)
+{
+    state = !state;
+    digitalWrite(_pin, state);
+    state = !state;
+    delay(time_delay);
+    digitalWrite(_pin, state);
 }

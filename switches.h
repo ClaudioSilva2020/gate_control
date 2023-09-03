@@ -20,27 +20,21 @@
 
 
 #define GATE_A GPIO0
-#define GATE_B GPIO1
+#define GATE_B GPIO2
 #define GATE_OUTPUT OUTPUT
-
-typedef enum switches_state
-{
-    OFF = LOW,
-    ON = HIGH 
-}switches_state_t ;
-
 
 class switches
 {
     private:
         int _pin;
+        int state = LOW;
     public:
-        switches_state_t state;
     
         switches(int pin);
         ~switches();
         void switches_turnon(); //Função que liga o rele
         void switches_turnoff(); //Função que desliga o rele
+        void switches_toogle(float time_delay);
 };
 
 #endif

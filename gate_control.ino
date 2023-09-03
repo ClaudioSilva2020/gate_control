@@ -10,6 +10,8 @@ const char* topic_b = "gate_b";
 const char* mqtt_username = "gm";
 const char* mqtt_password = "gm123";
 
+#define TIME_TO_WAIT  1000
+
 CommManager commManager(SSID_P, PASSWORD, mqttServer, mqttPort, mqtt_username, mqtt_password);
 switches gate_a(GATE_A);
 switches gate_b(GATE_B); 
@@ -36,30 +38,33 @@ void callback(char* topic, byte* payload, unsigned int length)
     message += (char) payload[i];
   }
   Serial.println(message);
-
-  if (topic == topic_a)
+  if (strcmp(topic, topic_a) == 0)
   {
+    Serial.print(topic_a);
+    Serial.println(message);
     if (message == "on")
     {
-        Serial.println("Abrir portão");
-        gate_a.switches_turnon();
+        Serial.println("Abrir ou fechar portão");
+        gate_a.switches_toogle(TIME_TO_WAIT);
     }
     if (message == "off")
     {
-        Serial.println("Fechar Portão");
-        gate_a.switches_turnoff();
+        Serial.println("Fechar ou abrir Portão");
+        gate_a.switches_toogle(TIME_TO_WAIT);
     }
-  }else if (topic == topic_b)
+  }else if (strcmp(topic, topic_b) == 0)
   {
+    Serial.print(topic_b);
+    Serial.println(message);
     if (message == "on")
     {
-        Serial.println("Abrir Portão");
-        gate_b.switches_turnon();
+        Serial.println("Abrir ou fechar  Portão");
+        gate_b.switches_toogle(TIME_TO_WAIT);
     }
     if (message == "off")
     {
-        Serial.println("Fechar Portão");
-        gate_b.switches_turnoff();
+        Serial.println("Fechar ou abrir Portão");
+        gate_b.switches_toogle(TIME_TO_WAIT);
     }
   }
   
