@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/claudio/Documentos/development/gate_control",
-      "program": "/home/claudio/Documentos/development/gate_control/build/Debug/outDebug",
+      "cwd": "/media/usuario/5b159178-143d-4878-8645-bbf845d9d74e/home/claudio/Documentos/development/gate_control",
+      "program": "/media/usuario/5b159178-143d-4878-8645-bbf845d9d74e/home/claudio/Documentos/development/gate_control/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
